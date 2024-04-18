@@ -7,6 +7,11 @@ const conn = require ('./db/conn')
 
 const app = express();
 
+// import models
+const Tought = require('./models/Thought')
+const User = require('./models/User')
+
+
 // template engine
 app.engine('handlebars',exphbs.engine())
 app.set('view engine', 'handlebars');
