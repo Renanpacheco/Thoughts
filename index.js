@@ -4,12 +4,14 @@ const session = require('express-session');
 const Filestore = require('session-file-store')(session);
 const flash = require('express-flash');
 const conn = require ('./db/conn')
+const toughtsRoutes = require('./routes/toughtsRoutes')
 
 const app = express();
 
 // import models
 const Tought = require('./models/Thought')
-const User = require('./models/User')
+const User = require('./models/User');
+const ToughtController = require('./controllers/ToughtController');
 
 
 // template engine
@@ -59,6 +61,9 @@ app.use((req, res,next) => {
     next()
 })
 
+//routes
+app.use('/thoughts', toughtsRoutes)
+app.get('/',ToughtController.showToughts)
 
 conn.
 sync()
