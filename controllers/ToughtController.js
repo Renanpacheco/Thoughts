@@ -1,4 +1,4 @@
-const Tought = require('../models/Tought')
+const Tought = require('../models/Thought')
 const User = require('../models/User')
 
 module.exports = class ToughtController{

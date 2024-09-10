@@ -13,6 +13,11 @@ const Tought = require('./models/Thought')
 const User = require('./models/User');
 const ToughtController = require('./controllers/ToughtController');
 
+//import Routes
+const thoughtsRoutes = require('./routes/toughtsRoutes');
+
+//import controllers
+const ThoughtController = require('./controllers/ToughtController');
 
 // template engine
 app.engine('handlebars',exphbs.engine())
