@@ -15,7 +15,7 @@ const ToughtController = require('./controllers/ToughtController');
 
 //import Routes
 const thoughtsRoutes = require('./routes/toughtsRoutes');
-
+const authRoutes = require('./routes/authRoutes');
 //import controllers
 const ThoughtController = require('./controllers/ToughtController');
 
@@ -68,6 +68,7 @@ app.use((req, res,next) => {
 
 //routes
 app.use('/thoughts', toughtsRoutes)
+app.use('/', authRoutes)
 app.get('/',ToughtController.showToughts)
 
 conn.
