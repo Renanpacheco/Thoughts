@@ -102,6 +102,18 @@ form input[type="submit"]:hover, btn:hover{
     color: #fff;
 
 }
+
+/* messages */
+.message{
+    padding: 1em;
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8dab8;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto 2em;
+    max-width: 60%;
+}
 /* footer */
 footer {
     height: 150px;
