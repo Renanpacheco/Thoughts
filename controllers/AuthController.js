@@ -5,6 +5,31 @@ module.exports = class ToughtController{
     static login(req, res){
         res.render('auth/login')
     }
+    
+    static async loginPost(req, res){
+        const {email, password} = req.body
+
+        //find the user
+        const user = await User.findOne({where: {email: email}})
+        if(!user){
+            req.flash('message', 'This e-mail dont exist')
+            res.render('auth/login')
+            return
+        }
+        //password match
+        const passwordMatch = bcrypt.compareSync(password, user.password)
+        if(!passwordMatch){
+            req.flash('message', 'invalid password')
+            res.render('auth/login')
+            return
+        }
+        // login success
+        req.session.userid = user.id
+        req.session.save(()=>{
+            res.redirect('/')
+        })
+    }
+
 
     static register(req, res){
         res.render('auth/register')
