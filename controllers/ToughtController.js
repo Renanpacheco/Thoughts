@@ -8,4 +8,28 @@ module.exports = class ToughtController{
     static async dashboard(req, res){
         res.render('toughts/dashboard')
     }
+    static createTought(req, res){
+        res.render('toughts/create')
+    }
+    static async createToughtSave(req, res){
+        const tought = {
+            title: req.body.title,
+            Userid: req.session.userid
+        }
+                
+        try {
+            await Tought.create(tought)
+            req.flash('message','success in the creation of the tought')
+
+            req.session.save(()=>{
+                res.redirect('/toughts/dashboard')
+    
+            })
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+        
+    }
 }
