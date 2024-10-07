@@ -22,12 +22,14 @@ module.exports = class ToughtController{
         if(!user){
             res.redirect('/login')
         }
-
-        //console.log("Teste função: ", user.Toughts)
         
         const toughts = user.Toughts.map((result) => result.dataValues);
-        
-        //console.log("map", toughts)
+
+        /*let emptyToughts = false
+
+        if (toughts.length === 0){
+            emptyToughts = true
+        }*/
 
         res.render('toughts/dashboard',{ toughts})
 
