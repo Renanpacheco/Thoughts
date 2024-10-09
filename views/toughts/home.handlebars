@@ -1,10 +1,29 @@
 <div class="home-header">
     <h1>All toughts</h1>
+
+    <form action="/" method="get">
+        <input type="text" name="search" placeholder="Searching for something?">
+        <input type="submit" class="btn" value="Search">
+    </form>
+
+    <div class="order-container">
+        <span>Order by:</span>
+        <form action="/" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i></button>
+        </form>
+        <form action="/" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi bi-arrow-down"></i></button>
+        </form>
+        <a href="/">Empty</a>
+    </div>
 </div>
 
 <div class="toughts-container">
     {{#each toughts}}
-    <h2>teste</h2>
         <span class="label">{{this.title}}</span>
         <figure>
             <blockquote>

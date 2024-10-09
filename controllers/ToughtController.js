@@ -7,8 +7,6 @@ module.exports = class ToughtController{
         const toughtsData = await Tought.findAll({include: User,})
 
         const toughts= toughtsData.map((result) => result.get({plain: true}))
-        //const toughts = toughtsData.map((result) => result.dataValues)
-        console.log("teste", toughts)
         res.render('toughts/home', {toughts})
     }
 
