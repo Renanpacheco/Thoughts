@@ -1,1 +1,15 @@
-<h1>All toughts</h1>
+<div class="home-header">
+    <h1>All toughts</h1>
+</div>
+
+<div class="toughts-container">
+    {{#each toughts}}
+    <h2>teste</h2>
+        <span class="label">{{this.title}}</span>
+        <figure>
+            <blockquote>
+                <figcaption> by <span>{{this.User.name}}</span></figcaption>
+            </blockquote>
+        </figure>
+    {{/each}}
+</div>
