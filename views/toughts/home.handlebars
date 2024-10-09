@@ -1,5 +1,16 @@
 <div class="home-header">
-    <h1>All toughts</h1>
+    {{#if search}}
+        <h1>You are searching for: <span>{{search}}</span></h1>
+        {{#if toughtsQty}}
+            <p>Founded <span>{{toughtsQty}}</span> thoughts</p>
+
+        {{else}}
+            <p>None thoughts are founded for <span>{{search}}</span> </p>
+
+        {{/if}}
+    {{else}}
+        <h1>All <span>toughts</span>:</h1>
+    {{/if}}
 
     <form action="/" method="get">
         <input type="text" name="search" placeholder="Searching for something?">
