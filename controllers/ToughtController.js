@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+const { Sequelize, or } = require('sequelize')
 const Tought = require('../models/Tought')
 const User = require('../models/User')
 const { Op } = require('sequelize')
@@ -12,9 +12,17 @@ module.exports = class ToughtController{
             search = req.query.search
         }
         
+        let order = 'DESC'
+
+        if(req.query.order === 'old'){
+            order = 'ASC'
+        }else{
+            order = 'DESC'
+        }
         const toughtsData = await Tought.findAll({
             include: User,
-            where: {title: {[Op.like]:`%${search}%`}}
+            where: {title: {[Op.like]:`%${search}%`}},
+            order: [['createAt', order]],
         })
 
         const toughts= toughtsData.map((result) => result.get({plain: true}))
